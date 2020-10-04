@@ -1,11 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { GithubRepoService } from './github-repo.service';
+import { GithubModule } from '../../github.module';
+import { GithubRepoService } from '../github-repo.service';
 
 describe('GithubRepoService', () => {
   let service: GithubRepoService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [GithubModule],
       providers: [GithubRepoService],
     }).compile();
 

@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { zip } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { GithubRepoService } from 'src/github/github-repo/github-repo.service';
-import { GithubUserService } from 'src/github/github-user/github-user.service';
+import { GithubRepoService } from '../github/github-repo/github-repo.service';
+import { GithubUserService } from '../github/github-user/github-user.service';
 
 @Injectable()
 export class UserService {

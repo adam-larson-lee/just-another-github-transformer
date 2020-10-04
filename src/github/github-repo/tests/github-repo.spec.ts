@@ -1,4 +1,4 @@
-import { GithubRepo } from './github-repo';
+import { GithubRepo } from '../github-repo';
 
 describe('GithubRepo', () => {
   it('should be defined', () => {
