@@ -15,7 +15,7 @@ export class GithubService {
         `https://api.github.com/${uri}`,
         {
           headers: {
-            Authorization: `token fa91db9d420b9299a19ab16d33dc66eb6dbd6743 `,
+            Authorization: `token ${process.env.TOKEN} `,
           },
         },
       ).pipe(
