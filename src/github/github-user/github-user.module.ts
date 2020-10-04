@@ -5,6 +5,7 @@ import { GithubUserService } from './github-user.service';
 @Module({
   imports: [GithubModule],
   providers: [GithubUserService],
+  exports: [GithubUserService],
 })
 
 export class GithubUserModule {};

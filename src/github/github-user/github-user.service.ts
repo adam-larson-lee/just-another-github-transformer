@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { GithubService } from '../github.service';
+import { GithubUser } from './github-user';
 
 @Injectable()
 export class GithubUserService {
@@ -8,6 +9,6 @@ export class GithubUserService {
   getUser(username: string) {
     return this
       .githubService
-      .get(`users/${username}`);
+      .get<GithubUser>(`users/${username}`);
   }
 };

@@ -1,25 +1,26 @@
-import { HttpService, Injectable } from '@nestjs/common';
+import { HttpException, HttpService, Injectable } from '@nestjs/common';
 import { AxiosResponse } from 'axios';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class GithubService {
   constructor(private httpService: HttpService) {}
 
-  get(uri: string): Observable<AxiosResponse<any>> {
-    console.log(uri);
+  get<T>(uri: string,): Observable<AxiosResponse<T>> {
     return this
       .httpService
       .get(
         `https://api.github.com/${uri}`,
         {
           headers: {
-            Authorization: `token ${process.env.TOKEN} `,
+            Authorization: `token ${process.env.TOKEN}`,
           },
         },
       ).pipe(
-        map(response => response.data)
+        catchError(e => {
+          throw new HttpException(e.response.data, e.response.status)
+        })
       );
   }
 }

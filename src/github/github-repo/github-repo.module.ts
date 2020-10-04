@@ -5,6 +5,7 @@ import { GithubRepoService } from './github-repo.service';
 @Module({
   imports: [GithubModule],
   providers: [GithubRepoService],
+  exports: [GithubRepoService],
 })
 
 export class GithubRepoModule {};
