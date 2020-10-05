@@ -12,11 +12,11 @@ export class GithubService {
       .httpService
       .get(
         `https://api.github.com/${uri}`,
-        {
+        process.env.TOKEN ? {
           headers: {
             Authorization: `token ${process.env.TOKEN}`,
           },
-        },
+        } : null,
       ).pipe(
         catchError(e => {
           throw new HttpException(e.response.data, e.response.status)
